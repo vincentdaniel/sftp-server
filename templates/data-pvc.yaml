@@ -9,6 +9,8 @@ metadata:
   {{- end }}
   name: {{ template "sftp-server.fullname" . }}-data
 spec:
+  capacity:
+    storage: "{{ .Values.persistentVolume.size }}"
   accessModes:
 {{ toYaml .Values.persistentVolume.accessModes | indent 4 }}
 {{- if .Values.persistentVolume.storageClass }}
